@@ -3,6 +3,8 @@ package com.laze.settlementsystem.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Arrays;
+
 @Getter
 @AllArgsConstructor
 public enum ServicePolicy {
@@ -36,4 +38,18 @@ public enum ServicePolicy {
     private final Long id;
     private final String url;
     private final Integer fee;
+
+    public static ServicePolicy findByUrl(String url) {
+        return Arrays.stream(values())
+                .filter(it -> it.url.equals(url))
+                .findFirst()
+                .orElseThrow();
+    }
+
+    public static ServicePolicy findById(Long id) {
+        return Arrays.stream(values())
+                .filter(it -> it.id.equals(id))
+                .findFirst()
+                .orElseThrow();
+    }
 }
