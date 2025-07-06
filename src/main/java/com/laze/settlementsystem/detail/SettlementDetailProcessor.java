@@ -26,7 +26,6 @@ public class SettlementDetailProcessor implements ItemProcessor<KeyAndCount, Set
         final Long count = item.count();
 
         final String targetDate = stepExecution.getJobParameters().getString("targetDate");
-        log.info("processor: {}", item);
         return new SettleDetail(
                 key.customerId(),
                 key.serviceId(),
